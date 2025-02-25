@@ -1,5 +1,7 @@
 ---
 import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 
 const pageTitle: string = 'About Me';
 
@@ -28,22 +30,21 @@ const textCase: string = 'uppercase'
 	<meta name="viewport" content="width=device-width"/>
 	<meta name="generator" content={Astro.generator}/>
 	<title>{pageTitle}</title>
-		<style define:vars={{skillColor, fontWeight, textCase}}>
-				h1 {
-						color: purple;
-						font-size: 4rem;
-				}
-				.skill {
-						color: var(--skillColor);
-						font-weight: var(--fontWeight);
-						text-transform: var(--textCase);
-				}
-		</style>
+	<style define:vars={{skillColor, fontWeight, textCase}}>
+		h1 {
+			color: purple;
+			font-size: 4rem;
+		}
+
+		.skill {
+			color: var(--skillColor);
+			font-weight: var(--fontWeight);
+			text-transform: var(--textCase);
+		}
+	</style>
 </head>
 <body>
-<a href="/">Home</a>
-<a href="/about/">About</a>
-<a href="/blog/">Blog</a>
+<Header/>
 
 <h1>My Astro Site</h1>
 <h1>{pageTitle}</h1>
@@ -64,11 +65,13 @@ const textCase: string = 'uppercase'
 </ul>
 <p>My skills are:</p>
 <ul>
-	{skills.map((skill: string) => <li class="skill">{skill}</li>)}
+	{skills.map((skill: string) =>
+		  <li class="skill">{skill}</li>)}
 </ul>
 
 {happy && <p>I am happy to be learning Astro!</p>}
 {finished && <p>I finished this tutorial!</p>}
 {goal === 3 && <p>My goal is to finish in 3 days!</p>}
+<Footer/>
 </body>
 </html>
